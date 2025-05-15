@@ -27,6 +27,8 @@
     pkgs.spotify
     pkgs.solaar
     pkgs.arduino-ide
+    pkgs.screen
+    pkgs.tmux
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
