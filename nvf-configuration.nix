@@ -5,7 +5,7 @@
     theme = {
       enable = true;
       name = "catppuccin";
-      style = "frappuccin"
+      style = "frappuccin";
     };
 
     statusline.lualine.enable = true;
