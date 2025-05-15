@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -26,8 +26,7 @@
     pkgs.pavucontrol
     pkgs.spotify
     pkgs.solaar
-    pkgs.nerd-fonts-complete
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
   };
@@ -68,10 +67,10 @@
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
-    autosuggestions = {
-      enable = true;
-      async = true;
-    };
+#    autosuggestions = {
+#      enable = true;
+#      async = true;
+#    };
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
