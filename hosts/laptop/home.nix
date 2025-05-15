@@ -33,6 +33,7 @@
     pkgs.arduino-ide
     pkgs.screen
     pkgs.tmux
+    pkgs.sshfs
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
