@@ -31,7 +31,8 @@
 	  modules = [
 	    ./hosts/laptop/configuration.nix
 	    ./modules/nvidia.nix
-	    ./modules/gnome.nix
+	    ./modules/sway.nix
+	    #./modules/gnome.nix
 	  ];
       };
     };
