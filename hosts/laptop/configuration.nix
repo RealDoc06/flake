@@ -56,6 +56,9 @@
   services.goxlr-utility.enable = true;
   services.goxlr-utility.autoStart.xdg = true;
 
+  # Per far andare Solaar
+  hardware.logitech.wireless.enable = true;
+
   # Enable the X11 windowing system.
   #services.xserver.enable = true;
 
