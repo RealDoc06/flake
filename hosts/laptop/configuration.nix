@@ -94,11 +94,24 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+#  programs.zsh = {
+#    enable = true;
+#    ohMyZsh = {
+#      enable = true;
+#      plugins = [
+#	"sudo"
+#	"git"
+#      ];
+#    };
+#  };
+
+  programs.zsh.enable = true;
+
   users.users.doc = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     description = "Sebastian Pugliese";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
     ];

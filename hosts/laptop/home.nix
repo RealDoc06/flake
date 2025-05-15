@@ -11,13 +11,10 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = [
-    # pkgs.neovim
-    # pkgs.kitty
+    inputs.zen-browser.packages."x86_64-linux".default
     pkgs.lshw
-    # pkgs.git
     pkgs.tree
     pkgs.vesktop
-    inputs.zen-browser.packages."x86_64-linux".default
     pkgs.tailscale
     pkgs.nmap
     pkgs.python3
@@ -29,10 +26,15 @@
     pkgs.pavucontrol
     pkgs.spotify
     pkgs.solaar
+    pkgs.nerd-fonts-complete
   ];
 
   home.file = {
   };
+
+  home.file.".zshrc".text = ''
+    export EDITOR=nvim
+  '';
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -52,12 +54,12 @@
     tweaks = [ "normal" ];
   };
   
+  programs.home-manager.enable = true;
   programs.kitty.enable = true;
   programs.neovim.enable = true;
   programs.zed-editor.enable = true;
   programs.btop.enable = true;
   programs.spotify-player.enable = true;
-  programs.home-manager.enable = true;
   programs.git = {
     enable = true;
     userName = "doc";
@@ -65,17 +67,22 @@
   };
   programs.zsh = {
     enable = true;
-    ohMyZsh = {
+    syntaxHighlighting.enable = true;
+    autosuggestions = {
       enable = true;
+      async = true;
+    };
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
       plugins = [
         "sudo"
-        "git"
-        "vscode"
+	"git"
       ];
     };
   };
 
-  # Waylanding
+  # Hyprlanding
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     bind =
