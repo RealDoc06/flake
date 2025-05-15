@@ -25,6 +25,12 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/media/dati" =
+    { device = "/dev/disk/by-uuid/B808D34C08D307F0";
+      fsType = "ntfs-3g";
+      options = [ "uid=1000" "gid=100" "umask=0022" "windows_names" "defaults" ];
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

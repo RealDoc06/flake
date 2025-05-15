@@ -28,12 +28,14 @@
     pkgs.vscode # so i can sync settings across devices
     pkgs.whatsapp-for-linux
     pkgs.pavucontrol
+    pkgs.pulseaudio
     pkgs.spotify
     pkgs.solaar
     pkgs.arduino-ide
     pkgs.screen
     pkgs.tmux
     pkgs.sshfs
+    pkgs.fastfetch
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
@@ -66,6 +68,14 @@
   programs.zed-editor.enable = true;
   programs.btop.enable = true;
   programs.spotify-player.enable = true;
+  programs.cava = {
+    enable = true;
+    settings = {
+      general.framerate = 144;
+      input.method = "pulse";
+      input.source = "alsa_output.usb-TC-Helicon_GoXLR-00.HiFi__Line2__sink.monitor";
+    };
+  };
   programs.git = {
     enable = true;
     userName = "doc";
@@ -90,8 +100,8 @@
   programs.kitty = {
     enable = true;
     settings = {
-      background_opacity = "0.5";
-      background_blur = 5;
+      background_opacity = "0.75";
+      background_blur = 30;
       cursor_trail = 2;
     };
   };
