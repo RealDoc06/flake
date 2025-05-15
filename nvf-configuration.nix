@@ -11,15 +11,15 @@
     statusline.lualine.enable = true;
     telescope.enable = true;
     autocomplete.nvim-cmp.enable = true;
-  };
 
-  languages = {
-    enableLSP = true;
-    enableTreesitter = true;
+    languages = {
+      enableLSP = true;
+      enableTreesitter = true;
 
-    nix.enable = true;
-    ts.enable = true;
-    go-lang.enable = true;
-    python.enable = true;
+      nix.enable = true;
+      ts.enable = true;
+      go-lang.enable = true;
+      python.enable = true;
+    };
   };
 }
