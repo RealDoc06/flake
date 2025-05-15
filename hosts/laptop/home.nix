@@ -11,6 +11,10 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = [
+    (inputs.nvf.lib.neovimConfiguration {
+      pkgs = pkgs;
+      modules = [ ../../nvf-configuration.nix ];
+    }).neovim
     inputs.zen-browser.packages."x86_64-linux".default
     pkgs.lshw
     pkgs.tree
@@ -57,7 +61,7 @@
   };
   
   programs.home-manager.enable = true;
-  programs.neovim.enable = true;
+  # programs.neovim.enable = true;
   programs.zed-editor.enable = true;
   programs.btop.enable = true;
   programs.spotify-player.enable = true;
