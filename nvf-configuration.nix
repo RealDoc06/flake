@@ -19,7 +19,7 @@
 
     nix.enable = true;
     ts.enable = true;
-    go.enable = true;
+    go-lang.enable = true;
     python.enable = true;
   };
 }
