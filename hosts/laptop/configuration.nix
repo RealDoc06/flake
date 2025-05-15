@@ -73,7 +73,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "dvorak";
+  console.keyMap = "us";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -111,7 +111,6 @@
     description = "Sebastian Pugliese";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      # pulseaudio-utils
     ];
   };
 
