@@ -63,6 +63,17 @@
     userName = "doc";
     userEmail = "sesygiallo@gmail.com";
   };
+  programs.zsh = {
+    enable = true;
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "sudo"
+        "git"
+        "vscode"
+      ];
+    };
+  };
 
   # Waylanding
   wayland.windowManager.hyprland.settings = {
