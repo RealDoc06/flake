@@ -57,7 +57,6 @@
   };
   
   programs.home-manager.enable = true;
-  programs.kitty.enable = true;
   programs.neovim.enable = true;
   programs.zed-editor.enable = true;
   programs.btop.enable = true;
@@ -81,6 +80,14 @@
         "sudo"
 	"git"
       ];
+    };
+  };
+  programs.kitty = {
+    enable = true;
+    settings = {
+      background_opacity = "0.5";
+      background_blur = 5;
+      cursor_trail = 2;
     };
   };
 

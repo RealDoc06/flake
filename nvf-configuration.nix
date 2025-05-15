@@ -5,7 +5,7 @@
     theme = {
       enable = true;
       name = "catppuccin";
-      style = "frappuccin";
+      style = "frappe";
     };
 
     statusline.lualine.enable = true;
@@ -18,7 +18,7 @@
 
       nix.enable = true;
       ts.enable = true;
-      go-lang.enable = true;
+      #go-lang.enable = true;
       python.enable = true;
     };
   };
