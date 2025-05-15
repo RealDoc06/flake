@@ -30,7 +30,8 @@
         specialArgs = { inherit inputs; };
 	  modules = [
 	    ./hosts/laptop/configuration.nix
-	    ./modules/nvidia.nix
+	     #./modules/nvidia.nix
+	    ./modules/noveau.nix
 	    ./modules/sway.nix
 	    #./modules/gnome.nix
 	  ];
