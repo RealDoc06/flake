@@ -17,9 +17,9 @@
     enableLSP = true;
     enableTreesitter = true;
 
-    nix.enable;
-    ts.enable;
-    go.enable;
-    python.enable;
+    nix.enable = true;
+    ts.enable = true;
+    go.enable = true;
+    python.enable = true;
   };
 }
