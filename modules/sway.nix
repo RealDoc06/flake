@@ -22,5 +22,16 @@
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     '';
   };
+
+  wayland.windowManager.sway = {
+    enable = true;
+    config = rec {
+      terminal = "kitty";
+      startup = [
+        { command = "kitty"; }
+      ];
+    };
+  };
+
   programs.waybar.enable = true;
 }
