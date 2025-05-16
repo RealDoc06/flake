@@ -109,4 +109,60 @@
       cursor_trail = 2;
     };
   };
+  
+  # Sway configuration
+  wayland.windowManager.sway =
+    let
+      # Applications and General
+      mod = "Mod4";
+      term = "kitty";
+      browser = "zen";
+
+      # Movements
+      up = "k";
+      down = "j";
+      right = "l";
+      left = "h";
+    in {
+      enable = true;
+      package = null; # package managed my flakes modules
+      config = rec {
+        modifier = mod;
+        terminal = term;
+        input = {
+          "*" = {
+            xkb_layout = "us";
+            xkb_variant = "intl";
+          };
+        };
+        output = {
+          "eDP-1" = {
+            mode = "1920x1080@144.149Hz";
+            pos = "0 0";
+          };
+          "HDMI-A-1" = {
+            mode = "1920x1080@60.000Hz";
+            pos = "-1920 0";
+          };
+        };
+        keybindings = {
+          "${mod}+Return" = "exec ${term}";
+          "${mod}+t" = "exec ${browser}";
+          "${mod}+q" = "kill";
+          "${mod}+Shift+c" = "reload";
+          "${mod}+Shift+e" = "exit";
+
+          # "${mod}+r" = "mode \"resize\"";
+
+          # Window movement
+          "${mod}+${up}" = "focus up";
+          "${mod}+${down}" = "focus down";
+          "${mod}+${right}" = "focus right";
+          "${mod}+${left}" = "focus left";
+        };
+        startup = [
+          { command = "kitty"; }
+        ];
+      };
+    };
 }

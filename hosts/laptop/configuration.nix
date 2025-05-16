@@ -104,6 +104,7 @@
   ];
 
   programs.zsh.enable = true;
+  programs.light.enable = true;
 
   users.users.doc = {
     isNormalUser = true;

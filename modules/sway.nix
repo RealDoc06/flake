@@ -1,7 +1,8 @@
 { config, pkgs, inputs, ... }:
 {
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = false;
+  # services.xserver.displayManager.gdm.wayland = false;
+  services.xserver.enable = false;
 
   programs.sway = {
     enable = true;
@@ -21,16 +22,6 @@
       export QT_QPA_PLATFORM=wayland
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     '';
-  };
-
-  wayland.windowManager.sway = {
-    enable = true;
-    config = rec {
-      terminal = "kitty";
-      startup = [
-        { command = "kitty"; }
-      ];
-    };
   };
 
   programs.waybar.enable = true;
