@@ -37,9 +37,9 @@
     pkgs.solaar
     pkgs.arduino-ide
     pkgs.screen
-    pkgs.tmux
     pkgs.sshfs
     pkgs.fastfetch
+    pkgs.glxinfo
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
@@ -72,6 +72,47 @@
   programs.zed-editor.enable = true;
   programs.btop.enable = true;
   programs.spotify-player.enable = true;
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      set -g @catppuccin_flavor 'frappe'
+
+      set -g status-right-length 100
+      set -g status-left ""
+      
+      # Window
+      set -g @catppuccin_window_status_style "custom"
+      set -g window-status-separator ""
+      
+      ## Window global/default configuration
+      set -g @catppuccin_window_default_text " #{window_name}"
+      set -g @catppuccin_window_status "icon"
+      set -g @catppuccin_window_default_fill "number"
+      set -g @catppuccin_window_number_position "left"
+      
+      set -g @catppuccin_window_left_separator "█"
+      set -g @catppuccin_window_middle_separator "█"
+      set -g @catppuccin_window_right_separator "█"
+      
+      ## Window current configuration
+      set -g @catppuccin_window_current_text "#{window_name}"
+      set -g @catppuccin_window_current_fill "all"
+      set -g @catppuccin_window_current_middle_separator "#[reverse] 󰿟 #[noreverse]"
+      
+      # Status modules config
+      set -g @catppuccin_date_time_text "%d-%m %H:%M"
+      
+      # Run plugin
+      run ~/projects/catppuccin-tmux/catppuccin.tmux
+      
+      # Status
+      set -gF  status-right "#{@catppuccin_status_directory}"
+      set -agF status-right "#{@catppuccin_status_session}"
+      set -agF status-right "#{@catppuccin_status_user}"
+      set -agF status-right "#{@catppuccin_status_host}"
+      set -agF status-right "#{E:@catppuccin_status_date_time}"
+    '';
+  };
   programs.cava = {
     enable = true;
     settings = {
@@ -117,6 +158,7 @@
       mod = "Mod4";
       term = "kitty";
       browser = "zen";
+      app_runner = "wofi --show drun";
 
       # Movements
       up = "k";
@@ -148,17 +190,51 @@
         keybindings = {
           "${mod}+Return" = "exec ${term}";
           "${mod}+t" = "exec ${browser}";
+          "${mod}+r" = "exec ${app_runner}";
           "${mod}+q" = "kill";
           "${mod}+Shift+c" = "reload";
           "${mod}+Shift+e" = "exit";
 
-          # "${mod}+r" = "mode \"resize\"";
 
-          # Window movement
+          # Window management
           "${mod}+${up}" = "focus up";
           "${mod}+${down}" = "focus down";
           "${mod}+${right}" = "focus right";
           "${mod}+${left}" = "focus left";
+
+          "${mod}+Shift+${up}" = "move up";
+          "${mod}+Shift+${down}" = "move down";
+          "${mod}+Shift+${right}" = "move right";
+          "${mod}+Shift+${left}" = "move left";
+
+          # toggle floating
+          "${mod}+Shift+f" = "floating toggle";
+
+          # toggle fullscreen
+          "${mod}+f" = "fullscreen";
+
+          # Workspaces
+          "${mod}+1" = "workspace number 1";
+          "${mod}+2" = "workspace number 2";
+          "${mod}+3" = "workspace number 3";
+          "${mod}+4" = "workspace number 4";
+          "${mod}+5" = "workspace number 5";
+          "${mod}+6" = "workspace number 6";
+          "${mod}+7" = "workspace number 7";
+          "${mod}+8" = "workspace number 8";
+          "${mod}+9" = "workspace number 9";
+          "${mod}+0" = "workspace number 10";
+
+          "${mod}+Shift+1" = "move container to workspace number 1";
+          "${mod}+Shift+2" = "move container to workspace number 2";
+          "${mod}+Shift+3" = "move container to workspace number 3";
+          "${mod}+Shift+4" = "move container to workspace number 4";
+          "${mod}+Shift+5" = "move container to workspace number 5";
+          "${mod}+Shift+6" = "move container to workspace number 6";
+          "${mod}+Shift+7" = "move container to workspace number 7";
+          "${mod}+Shift+8" = "move container to workspace number 8";
+          "${mod}+Shift+9" = "move container to workspace number 9";
+          "${mod}+Shift+0" = "move container to workspace number 10";
         };
         startup = [
           { command = "kitty"; }

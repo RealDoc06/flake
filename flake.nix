@@ -28,13 +28,14 @@
       laptop = nixpkgs.lib.nixosSystem {
       	# system = "x86_64-linux";
         specialArgs = { inherit inputs; };
-	  modules = [
-	    ./hosts/laptop/configuration.nix
-	     #./modules/nvidia.nix
-	    ./modules/noveau.nix
-	    ./modules/sway.nix
-	    #./modules/gnome.nix
-	  ];
+	modules = [
+	  ./hosts/laptop/configuration.nix
+	  ./modules/nvidia.nix
+	  ./modules/hyprland.nix
+	  #./modules/noveau.nix
+	  #./modules/sway.nix
+	  #./modules/gnome.nix
+	];
       };
     };
   };
