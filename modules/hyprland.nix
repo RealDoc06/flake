@@ -1,9 +1,8 @@
 { config, pkgs, inputs, ... }:
 {
   services.displayManager.sddm.enable = true;
-
-  services.xserver.enable = true;
-  
+  services.displayManager.sddm.wayland.enable = true;
+    
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;

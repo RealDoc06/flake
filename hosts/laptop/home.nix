@@ -146,12 +146,36 @@
     enable = true;
     settings = {
       background_opacity = "0.75";
-      background_blur = 30;
+      background_blur = 4;
       cursor_trail = 2;
     };
   };
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    # package = null;
+    # portalPackage = null;
+    systemd.variables = [ "--all" ];
+    settings = {
+      "$mod" = "SUPER";
+      bind = [
+        "$mod, T, exec, zen"
+        "$mod, return, exec, kitty"
+        "$mod, Q, killactive"
+      ] ++ (
+        builtins.concatLists (builtins.genList (i:
+          let ws = i + 1;
+            in [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          )
+        9)
+      );
+    };
+  };
   
-  # Sway configuration
+  # Sway configuration problematic with nvidia graphic
   wayland.windowManager.sway =
     let
       # Applications and General

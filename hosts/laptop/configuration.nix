@@ -110,6 +110,9 @@
 
   programs.zsh.enable = true;
   programs.light.enable = true;
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
+  programs.hyprland.portalPackage = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".xdg-desktop-portal-hyprland;
 
   users.users.doc = {
     isNormalUser = true;
