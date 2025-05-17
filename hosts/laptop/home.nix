@@ -72,6 +72,10 @@
   programs.zed-editor.enable = true;
   programs.btop.enable = true;
   programs.spotify-player.enable = true;
+  programs.wofi = {
+    enable = true;
+    # settings and style
+  };
   programs.tmux = {
     enable = true;
     extraConfig = ''
