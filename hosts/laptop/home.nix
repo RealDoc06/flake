@@ -40,6 +40,7 @@
     pkgs.sshfs
     pkgs.fastfetch
     pkgs.glxinfo
+    pkgs.jq
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
@@ -171,9 +172,16 @@
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
+      "$browser" = "zen";
+
+      input = {
+        kb_layout = "us";
+        kb_variant = "alt-intl";
+      };
+
       general = {
         gaps_in = 5;
-        gaps_out = 15;
+        gaps_out = 10;
         border_size = 1;
       };
       decoration = {
@@ -191,17 +199,54 @@
         "eDP-1, 1920x1080@144.15, 0x0, 1"
         "HDMI-A-1, 1920x1080@60.00, -1920x0, 1"
       ];
+      windowrule = [
+        "suppressevent maximize, class:.*"
+        "nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
+      ];
       bind = [
-        "$mod, T, exec, zen"
+        "$mod, M, exit"
+        "$mod, T, exec, $browser"
+        "$mod, R, exec, $menu"
         "$mod, return, exec, $terminal"
+
+        "$mod SHIFT, F, togglefloating"
+        "$mod, P, pin"
+
+        # Screenshot
+        "$mod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
+        ", Print, exec, grim - | wl-copy"
+
+        # Focus move (arrow)
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
+        # Focus move (vim movement)
+        "$mod, k, movefocus, u"
+        "$mod, j, movefocus, d"
+        "$mod, h, movefocus, l"
+        "$mod, l, movefocus, r"
+
+        # Window move (arrow)
+        "$mod SHIFT, up, movewindow, u"
+        "$mod SHIFT, down, movewindow, d"
+        "$mod SHIFT, left, movewindow, l"
+        "$mod SHIFT, right, movewindow, r"
+        # Window move (vim movement)
+        "$mod SHIFT, k, movewindow, u"
+        "$mod SHIFT, j, movewindow, d"
+        "$mod SHIFT, h, movewindow, l"
+        "$mod SHIFT, l, movewindow, r"
+
         "$mod, Q, killactive"
-        "$mod, R, $menu"
+        "$mod, F, fullscreen"
       ] ++ (
         builtins.concatLists (builtins.genList (i:
           let ws = i + 1;
             in [
               "$mod, code:1${toString i}, workspace, ${toString ws}"
               "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "$mod ALT_L, code:1${toString i}, focusworkspaceoncurrentmonitor, ${toString ws}"
             ]
           )
         9)
