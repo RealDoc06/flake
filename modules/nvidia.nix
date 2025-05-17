@@ -1,6 +1,7 @@
 { pkgs, config, lib, ... }:
 
 {
+  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
   hardware.graphics.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];

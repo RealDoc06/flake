@@ -13,6 +13,8 @@
       inputs.catppuccin.nixosModules.catppuccin
     ];
 
+  documentation.enable = false;
+
   # Bootloader.
   boot.loader.grub = {
     enable = true;
@@ -110,9 +112,9 @@
 
   programs.zsh.enable = true;
   programs.light.enable = true;
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
-  programs.hyprland.portalPackage = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".xdg-desktop-portal-hyprland;
+  # programs.hyprland.enable = true;
+  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
+  # programs.hyprland.portalPackage = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".xdg-desktop-portal-hyprland;
 
   users.users.doc = {
     isNormalUser = true;
@@ -125,6 +127,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    backupFileExtension = "backup";
     users = {
       "doc" = {
         imports = [
