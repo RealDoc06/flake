@@ -21,10 +21,11 @@
     pkgs.lshw
     pkgs.tree
     pkgs.vesktop
-    pkgs.discord
-    #(pkgs.discord.override {
-    #  withVencord = true;
-    #})
+    # pkgs.discord
+    (pkgs.discord.override {
+      withOpenAsar = true;
+      withVencord = true;
+    })
     pkgs.tailscale
     pkgs.nmap
     pkgs.python3
