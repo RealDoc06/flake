@@ -6,6 +6,7 @@
       enable = true;
       name = "catppuccin";
       style = "frappe";
+      transparent = true;
     };
 
     # Auto tab
@@ -13,10 +14,6 @@
     utility.sleuth.enable = true;
 
     lsp.enable = true;
-    
-#    options = {  
-#      shiftwidth = 2;
-#    };
 
     statusline.lualine.enable = true;
     telescope.enable = true;

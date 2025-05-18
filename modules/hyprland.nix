@@ -1,4 +1,10 @@
 { config, pkgs, inputs, ... }:
+let
+  screenshotScript = pkgs.writeShellScriptBin "current_monitor_screenshot" ''
+    monitor=$(hyprctl activeworkspace -j | jq -r .monitor)
+    grim -o "$monitor" - | wl-copy
+  '';
+in
 {
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
@@ -14,6 +20,7 @@
     grim
     slurp
     wl-clipboard
+    screenshotScript
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }

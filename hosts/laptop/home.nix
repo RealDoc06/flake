@@ -1,13 +1,15 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  imports = [
+    #./home-manager-modules/hyprland.nix
+  ];
+
   home.username = "doc";
   home.homeDirectory = "/home/doc";
 
-  home.stateVersion = "24.11"; # Please read the comment before changing.
-  
+  home.stateVersion = "24.11";  
+
   nixpkgs.config.allowUnfree = true;
 
   home.packages = [
@@ -20,9 +22,9 @@
     pkgs.tree
     pkgs.vesktop
     pkgs.discord
-    #    (pkgs.discord.override {
-    #      withVencord = true;
-    #    })
+    #(pkgs.discord.override {
+    #  withVencord = true;
+    #})
     pkgs.tailscale
     pkgs.nmap
     pkgs.python3
@@ -174,9 +176,18 @@
       "$menu" = "wofi --show drun";
       "$browser" = "zen";
 
+      exec-once = [
+        "hyprctl dispatch workspace 1"
+      ];
+
       input = {
         kb_layout = "us";
         kb_variant = "alt-intl";
+        force_no_accel = true;
+      };
+
+      "device[pnp0c50:00-04f3:30aa-touchpad]" = {
+        natural_scroll = true;
       };
 
       general = {
@@ -199,6 +210,10 @@
         "eDP-1, 1920x1080@144.15, 0x0, 1"
         "HDMI-A-1, 1920x1080@60.00, -1920x0, 1"
       ];
+      workspace = [
+        "1, monitor:eDP-1"
+        "2, monitor:HDMI-A-1"
+      ];
       windowrule = [
         "suppressevent maximize, class:.*"
         "nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
@@ -207,14 +222,17 @@
         "$mod, M, exit"
         "$mod, T, exec, $browser"
         "$mod, R, exec, $menu"
+        "$mod, Space, exec, $menu"
         "$mod, return, exec, $terminal"
 
         "$mod SHIFT, F, togglefloating"
         "$mod, P, pin"
+        "$mod, F, fullscreen"
 
         # Screenshot
         "$mod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
         ", Print, exec, grim - | wl-copy"
+        "ALT, Print, exec, current_monitor_screenshot"
 
         # Focus move (arrow)
         "$mod, up, movefocus, u"
@@ -239,7 +257,6 @@
         "$mod SHIFT, l, movewindow, r"
 
         "$mod, Q, killactive"
-        "$mod, F, fullscreen"
       ] ++ (
         builtins.concatLists (builtins.genList (i:
           let ws = i + 1;
