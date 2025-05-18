@@ -23,7 +23,7 @@
     pkgs.vesktop
     # pkgs.discord
     (pkgs.discord.override {
-      withOpenAsar = true;
+      withOpenASAR = true;
       withVencord = true;
     })
     pkgs.tailscale
