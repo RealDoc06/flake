@@ -44,6 +44,7 @@
     pkgs.fastfetch
     pkgs.glxinfo
     pkgs.jq
+    pkgs.unzip
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
