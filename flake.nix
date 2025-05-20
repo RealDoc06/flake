@@ -37,6 +37,18 @@
 	  #./modules/gnome.nix
 	];
       };
+      wsl = nixpkgs.lib.nixosSystem {
+      	# system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+	modules = [
+	  ./hosts/wsl/configuration.nix
+	  #./modules/nvidia.nix
+	  #./modules/hyprland.nix
+	  #./modules/noveau.nix
+	  #./modules/sway.nix
+	  #./modules/gnome.nix
+	];
+      };
     };
   };
 }
