@@ -7,7 +7,7 @@
 
   home.username = "doc";
   home.homeDirectory = "/home/doc";
-  home.shell = pkgs.zsh;
+  home.sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
 
   home.stateVersion = "24.11";  
 
