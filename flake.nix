@@ -38,16 +38,24 @@
 	];
       };
       wsl = nixpkgs.lib.nixosSystem {
-      	# system = "x86_64-linux";
         specialArgs = { inherit inputs; };
 	modules = [
 	  ./hosts/wsl/configuration.nix
-	  #./modules/nvidia.nix
-	  #./modules/hyprland.nix
-	  #./modules/noveau.nix
-	  #./modules/sway.nix
-	  #./modules/gnome.nix
 	];
+      };
+    };
+
+    homeConfigurations = {
+      doc = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        modules = [
+          ./hosts/wsl/home.nix
+          inputs.catppuccin.homeModules.catppuccin
+        ];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
   };
