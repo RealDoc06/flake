@@ -75,7 +75,7 @@
   
   programs.home-manager.enable = true;
   # programs.neovim.enable = true;
-  programs.zed-editor.enable = true;
+  # programs.zed-editor.enable = true;
   programs.btop.enable = true;
   programs.spotify-player.enable = true;
   programs.wofi = {
