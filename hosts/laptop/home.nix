@@ -45,7 +45,8 @@
     pkgs.glxinfo
     pkgs.jq
     pkgs.unzip
-    pkgs.jetbrains.pycharm-community
+    # pkgs.jetbrains.pycharm-community
+    pkgs.jetbrains.pycharm-community-bin
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
