@@ -157,6 +157,7 @@
       background_opacity = "0.75";
       background_blur = 4;
       cursor_trail = 2;
+      tync_to_monitor = "no";
     };
   };
 
