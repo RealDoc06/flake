@@ -51,6 +51,7 @@
     pkgs.jetbrains.pycharm-professional
     pkgs.dig
     pkgs.bat
+    pkgs.wakeonlan
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
