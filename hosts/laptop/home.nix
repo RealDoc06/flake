@@ -29,6 +29,7 @@
     pkgs.tailscale
     pkgs.nmap
     pkgs.python3
+    pkgs.python313
     pkgs.telegram-desktop
     pkgs.goxlr-utility
     pkgs.prismlauncher
