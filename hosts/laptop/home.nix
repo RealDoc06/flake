@@ -47,6 +47,8 @@
     pkgs.unzip
     # pkgs.jetbrains.pycharm-community
     pkgs.jetbrains.pycharm-community-bin
+    pkgs.dig
+    pkgs.bat
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.file = {
@@ -66,6 +68,7 @@
     flavor = "frappe";
     accent = "sky";
   };
+  catppuccin.bat.enable = true;
   catppuccin.gtk = {
     enable = true;
     flavor = "frappe";

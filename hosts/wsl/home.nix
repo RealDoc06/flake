@@ -114,10 +114,13 @@
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
-#    autosuggestions = {
-#      enable = true;
-#      async = true;
-#    };
+    autosuggestions = {
+      enable = true;
+      async = true;
+    };
+    shellAliases = {
+      vi = "nvim";
+    };
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";

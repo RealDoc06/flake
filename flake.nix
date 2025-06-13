@@ -31,10 +31,10 @@
 	modules = [
 	  ./hosts/laptop/configuration.nix
 	  ./modules/nvidia.nix
-	  ./modules/hyprland.nix
+          ./modules/hyprland.nix
 	  #./modules/noveau.nix
 	  #./modules/sway.nix
-	  #./modules/gnome.nix
+          #./modules/gnome.nix
 	];
       };
       wsl = nixpkgs.lib.nixosSystem {
