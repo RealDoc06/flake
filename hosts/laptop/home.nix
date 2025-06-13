@@ -47,6 +47,7 @@
     pkgs.unzip
     # pkgs.jetbrains.pycharm-community
     pkgs.jetbrains.pycharm-community-bin
+    pkgs.jetbrains.pycharm-professional
     pkgs.dig
     pkgs.bat
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
