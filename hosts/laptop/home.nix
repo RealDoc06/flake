@@ -28,7 +28,7 @@
     })
     pkgs.tailscale
     pkgs.nmap
-    pkgs.python3
+    # pkgs.python3
     pkgs.python313Full
     pkgs.telegram-desktop
     pkgs.goxlr-utility
