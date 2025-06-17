@@ -285,4 +285,12 @@
       ];
     };
   };
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/Mutter" = {
+        xwayland-force-zero-scaling = true;
+      };
+    };
+  };
 }
